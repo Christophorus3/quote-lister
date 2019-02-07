@@ -13,12 +13,12 @@ const app = express()
 app.use(express.static(path.join(__dirname, "build")))
 
 // ping pong route - for test only.
-app.get('/ping', function (req, res) {
+app.get('/ping', (req, res) => {
   return res.send("pong")
 })
 
 // serve the react app in index.html
-app.get('/*', function (req, res) {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"))
 })
 
