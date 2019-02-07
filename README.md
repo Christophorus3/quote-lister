@@ -1,3 +1,9 @@
+# Quote Lister
+
+This is an app written to experiment with the CRUD pattern and MongoDB for data storage.
+
+It simply stores and lists quotes entered by the user.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
