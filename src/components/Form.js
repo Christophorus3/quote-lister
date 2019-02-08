@@ -21,9 +21,19 @@ class Form extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     console.log("submit was hit: ", this.state)
-    fetch('http://localhost:8080/quote')
+    fetch('http://localhost:8080/quote', {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        quote: this.state.quote
+      })
+    })
       .then(res => res.text())
-      .then(data => console.log(data))
+      .then(text => console.log(text))
   }
 
   render() {
