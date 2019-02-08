@@ -17,9 +17,14 @@ app.get('/ping', (req, res) => {
   return res.send("pong")
 })
 
+app.get('/quote', (req, res) => {
+  res.send('quote here.')
+})
+
 // serve the react app in index.html
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"))
 })
+
 
 app.listen(port)
