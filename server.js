@@ -32,15 +32,31 @@ app.get('/ping', (req, res) => {
   return res.send("pong")
 })
 
-app.get('/quote', (req, res) => {
-  res.send('quote here.')
+app.get('/quotes', (req, res) => {
+  db.collection('quotes').find().toArray((err, results) => {
+    if(err) return res.send(err)
+
+    console.log(results)
+    res.send(results)
+  })
 })
 
 app.post('/quote', (req, res) => {
   const {name, quote} = req.body
   console.log("name: ", name)
   console.log("quote: ", quote)
-  return res.sendStatus(200)
+  //TODO: should definitly sanitize input here!!!
+
+  //save quote to database:
+  db.collection('quotes').save({name, quote}, (err, result) => {
+    if (err) return console.log(err)
+
+    console.log("saved to database: ", result)
+    res.sendStatus(200)
+  })
+
+
+  //return res.sendStatus(200)
   //return res.redirect('/')
 })
 
