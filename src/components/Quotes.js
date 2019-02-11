@@ -5,7 +5,7 @@ const Quotes = (props) => {
 
   let quoteList = quotes.map(item => {
     return (
-      <blockquote className="blockquote border rounded p-2" key={item._id}>
+      <blockquote className="blockquote border rounded p-3" key={item._id}>
         <p className="mb-0">{item.quote}</p>
         <footer className="blockquote-footer">Someone famous called <cite title="Source Title">{item.name}</cite>
         </footer>

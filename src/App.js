@@ -27,20 +27,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar bg="dark" variant="dark" expand="lg" className="sticky-top">
           <NavbarBrand>QuoteStorer</NavbarBrand>
         </Navbar>
         <main>
           <Container>
             <Row>
-              <Col xs={6} className="mx-auto">
-                <Card body className="my-3">
+              <Col xs={8} className="mx-auto">
+                <Card body className="my-5">
                   <FormContainer/>
                 </Card>
               </Col>
             </Row>
             <Row>
-              <Col xs={6} className="mx-auto">
+              <Col xs={8} className="mx-auto">
                 <Quotes quotes={this.state.quotes}/>
               </Col>
             </Row>
