@@ -29,6 +29,8 @@ class FormContainer extends Component {
       name: this.state.name,
       quote: this.state.quote
     })
+
+    this.setState({name: "", quote: ""})
   }
 
   render() {
