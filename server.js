@@ -47,12 +47,21 @@ app.post('/quote', (req, res) => {
   //TODO: should definitly sanitize input here!!!
 
   //save quote to database:
+  db.collection('quotes').insertOne({name, quote})
+    .then(result => {
+      res.send({id: result.insertedId})
+    })
+    .catch(err => {
+      res.send(err)
+    })
+
+  /*
   db.collection('quotes').save({name, quote}, (err, result) => {
     if (err) return console.log(err)
 
-    console.log("saved to database: ", result)
+    console.log("saved to database: ", result.ops)
     res.sendStatus(200)
-  })
+  })*/
 
 
   //return res.sendStatus(200)

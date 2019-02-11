@@ -24,6 +24,34 @@ class App extends Component {
       })
   }
 
+  handleSubmit = (data) => {
+
+
+    fetch('/quote', {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: data.name,
+        quote: data.quote
+      })
+    })
+      .then(res => res.json())
+      .then(json => {
+        console.log(json)
+        let newEntry = {
+          ...data,
+          _id: json.id
+        }
+        console.log(newEntry)
+        this.setState(state => {
+          return { quotes: [...state.quotes, newEntry] }
+        })
+      })
+  }
+
   render() {
     return (
       <div className="App">
@@ -35,7 +63,7 @@ class App extends Component {
             <Row>
               <Col xs={8} className="mx-auto">
                 <Card body className="my-5">
-                  <FormContainer/>
+                  <FormContainer submit={this.handleSubmit}/>
                 </Card>
               </Col>
             </Row>

@@ -5,6 +5,8 @@ class FormContainer extends Component {
   constructor(props) {
     super(props)
 
+    this.submit = props.submit
+
     this.state = {
       name: "",
       quote: ""
@@ -23,19 +25,10 @@ class FormContainer extends Component {
     event.preventDefault()
     console.log("submit was hit: ", this.state)
 
-    fetch('/quote', {
-      method: "post",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        quote: this.state.quote
-      })
+    this.submit({
+      name: this.state.name,
+      quote: this.state.quote
     })
-      .then(res => res.text())
-      .then(text => console.log(text))
   }
 
   render() {
