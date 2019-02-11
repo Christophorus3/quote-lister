@@ -36,7 +36,6 @@ app.get('/quotes', (req, res) => {
   db.collection('quotes').find().toArray((err, results) => {
     if(err) return res.send(err)
 
-    console.log(results)
     res.send(results)
   })
 })

@@ -21,7 +21,8 @@ class Form extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     console.log("submit was hit: ", this.state)
-    fetch('http://localhost:8080/quote', {
+
+    fetch('/quote', {
       method: "post",
       headers: {
         'Accept': 'application/json',
