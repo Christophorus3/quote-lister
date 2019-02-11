@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 //import logo from './logo.svg';
-import Form from "./components/Form"
+import FormContainer from "./components/FormContainer"
 import Quotes from "./components/Quotes"
 //import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap-reboot.min.css'
+import {Card, Col, Container, Navbar, NavbarBrand, Row} from 'react-bootstrap'
 
 class App extends Component {
   constructor(props) {
@@ -24,14 +27,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <NavbarBrand>QuoteStorer</NavbarBrand>
+        </Navbar>
         <main>
-          <Form/>
-          <Quotes quotes={this.state.quotes}/>
+          <Container>
+            <Row>
+              <Col xs={6} className="mx-auto">
+                <Card body className="my-3">
+                  <FormContainer/>
+                </Card>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6} className="mx-auto">
+                <Quotes quotes={this.state.quotes}/>
+              </Col>
+            </Row>
+          </Container>
         </main>
       </div>
     );
