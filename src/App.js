@@ -18,10 +18,16 @@ class App extends Component {
 
   componentDidMount() {
     fetch('/quotes')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
+        response.json()
+      })
       .then(quotes => {
         this.setState({quotes})
       })
+      .catch((err) => {console.log(err)})
   }
 
   handleSubmit = (data) => {
@@ -50,6 +56,7 @@ class App extends Component {
           return { quotes: [...state.quotes, newEntry] }
         })
       })
+      .catch((err) => {console.log(err)})
   }
 
   render() {
