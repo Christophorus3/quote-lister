@@ -22,7 +22,7 @@ class App extends Component {
         if (!response.ok) {
           throw Error(response.statusText)
         }
-        response.json()
+        return response.json()
       })
       .then(quotes => {
         this.setState({quotes})
