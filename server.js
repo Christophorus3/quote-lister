@@ -69,7 +69,7 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"))
 })
 
-MongoClient.connect(mongoUrl, (err, client) => {
+MongoClient.connect(mongoUrl, { useNewUrlParser: true}, (err, client) => {
   if (err) {
     console.log(err)
   } else {
