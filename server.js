@@ -10,7 +10,8 @@ const MongoClient = require('mongodb').MongoClient
 const mongoUser = process.env.MONGO_USER
 const mongoPwd = process.env.MONGO_PWD
 const mongoDbName = process.env.MONGO_DB
-const mongoUrl = `mongodb://${mongoUser}:${mongoPwd}@wottawa.at:27017/${mongoDbName}`
+//const mongoUrl = `mongodb://${mongoUser}:${mongoPwd}@wottawa.at:27017/${mongoDbName}`
+const mongoUrl = `mongodb://localhost:27017/`
 
 let db //holds mongo database
 
@@ -54,19 +55,14 @@ app.post('/quote', (req, res) => {
     .catch(err => {
       res.send(err)
     })
-
-  /*
-  db.collection('quotes').save({name, quote}, (err, result) => {
-    if (err) return console.log(err)
-
-    console.log("saved to database: ", result.ops)
-    res.sendStatus(200)
-  })*/
-
-
   //return res.sendStatus(200)
   //return res.redirect('/')
 })
+
+/*
+app.put('/quote', (req, res) => {
+
+})*/
 
 // serve the react app in index.html
 app.get('/*', (req, res) => {
